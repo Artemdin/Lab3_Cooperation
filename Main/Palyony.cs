@@ -22,6 +22,7 @@ public class Palyony
 	{
 		Console.WriteLine("Виконується завдання 1 студента Пальонний Назар");
 
+		Console.WriteLine("1");
 		// Логіка для завдання 1(робота з масивами)
 	}
 
