@@ -17,7 +17,15 @@ class Program
             Console.WriteLine("======================================================");
             Console.Write("Ваш вибір: ");
 
-            if (!int.TryParse(Console.ReadLine(), out int studentChoice) || studentChoice == 0)
+            bool parsed  = int.TryParse(Console.ReadLine(), out int studentChoice);
+
+            if (!parsed)
+            {
+                Console.WriteLine("Невірні вхідні дані! Спробуйте ще раз.\n");
+                continue;
+            }
+
+            if (studentChoice == 0)
                 break;
 
             if (studentChoice < 1 || studentChoice > 3)
