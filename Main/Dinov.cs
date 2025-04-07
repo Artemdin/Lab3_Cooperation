@@ -2,91 +2,28 @@ using System;
 
 public class Dinov
 {
-	public static void ExecuteTask(int taskNumber)
-	{
-		switch (taskNumber)
-		{
-			case 1:
-				Task1();
-				break;
-			case 2:
-				Task2();
-				break;
-			default:
-				Console.WriteLine("Невідоме завдання.");
-				break;
-		}
-	}
-    static int ReadInt(string message)
+    public static void ExecuteTask(int taskNumber)
     {
-        int result;
-        while (true)
+        switch (taskNumber)
         {
-            Console.Write(message);
-            if (int.TryParse(Console.ReadLine(), out result))
-                return result;
-            Console.WriteLine("Помилка! Введіть ціле число.");
+            case 1:
+                Task1();
+                break;
+            case 2:
+                Task2();
+                break;
+            default:
+                Console.WriteLine("Невідоме завдання.");
+                break;
         }
-    }
-
-
-    static int[] InputArray()
-    {
-        int size = ReadInt("Введіть кількість елементів масиву: ");
-
-        if (size <= 0)
-        {
-            Console.WriteLine("Розмір масиву має бути більше 0.");
-            return new int[0];
-        }
-
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++)
-        {
-            arr[i] = ReadInt($"arr[{i}] = ");
-        }
-        return arr;
-    }
-
-    static void PrintArray(int[] arr)
-    {
-        if (arr.Length == 0)
-        {
-            Console.WriteLine("Масив порожній.");
-            return;
-        }
-
-        Console.WriteLine("[" + string.Join(", ", arr) + "]");
-    }
-    private static int[][] InputArrayzub()
-    {
-        Console.WriteLine("Введіть кількість рядків масиву:");
-        int rowCount = int.Parse(Console.ReadLine());
-
-        int[][] arr = new int[rowCount][];
-
-        for (int i = 0; i < rowCount; i++)
-        {
-            Console.WriteLine($"Введіть елементи для рядка {i + 1} (через пробіл):");
-            string[] input = Console.ReadLine().Split(' ');
-            arr[i] = input.Select(int.Parse).ToArray();
-        }
-
-        return arr;
     }
     private static void Task1()
     {
+
         Console.WriteLine("Завдання 2: Знищити останній від’ємний елемент.");
-        int[] arr = InputArray();
+        int[] arr = CommonMethods.InputArray();
 
-        if (arr.Length == 0)
-        {
-            Console.WriteLine("Операція неможлива. Масив порожній.");
-            return;
-        }
-
-
-
+       
         int lastindex = -1;
         for (int i = arr.Length - 1; i >= 0; i--)
         {
@@ -112,7 +49,7 @@ public class Dinov
             }
             arr = newArr;
             Console.WriteLine("Результат:");
-            PrintArray(arr);
+            CommonMethods.PrintArray(newArr);
         }
         else
         {
@@ -124,15 +61,10 @@ public class Dinov
 	{
 		Console.WriteLine("Завдання 11: Додати рядок після рядка, що містить максимальний елемент (якщо у різних місцях " +
             "є кілька елементів \nз однаковим максимальним значенням, то брати перший з них)");
-        int[][] arr = InputArrayzub();
+      
+        int[][] arr = CommonMethods.InputJaggedArray();
 
-        
-        if (arr.Length == 0)
-        {
-            Console.WriteLine("Операція неможлива. Масив порожній.");
-            return;
-        }
-
+     
         int maxValue = int.MinValue;
         int maxRowIndex = -1;
         int maxColIndex = -1;
@@ -174,15 +106,10 @@ public class Dinov
             }
 
           
-            arr = newArr;
-
 
             Console.WriteLine("Результат:");
             Console.WriteLine("Новий масив:");
-            foreach (var row in arr)
-            {
-                Console.WriteLine(string.Join(", ", row));
-            }
+            CommonMethods.PrintJaggedArray(newArr);
         }
         else
         {
