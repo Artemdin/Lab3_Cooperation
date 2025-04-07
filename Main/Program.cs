@@ -20,6 +20,12 @@ class Program
             if (!int.TryParse(Console.ReadLine(), out int studentChoice) || studentChoice == 0)
                 break;
 
+            if (studentChoice < 1 || studentChoice > 3)
+            {
+                Console.WriteLine("Невірний вибір студента! Спробуйте ще раз.\n");
+                continue;
+            }
+
             Console.WriteLine("\n=== Завдання ===");
             Console.WriteLine("Оберіть номер завдання:");
             Console.WriteLine("  1 - Завдання 1");
