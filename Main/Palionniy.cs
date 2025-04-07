@@ -1,6 +1,6 @@
 using System;
 
-public class Palyony
+public class Palionniy
 {
     public static void ExecuteTask(int taskNumber)
     {

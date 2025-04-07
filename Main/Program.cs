@@ -43,7 +43,7 @@ class Program
             {
                 case 1:
                     Console.WriteLine("\nВиконання завдання студента Пальонний Назар");
-                    Palyony.ExecuteTask(taskChoice);
+                    Palionniy.ExecuteTask(taskChoice);
                     break;
                 case 2:
                     Console.WriteLine("\nВиконання завдання студента Дінов Артем");
