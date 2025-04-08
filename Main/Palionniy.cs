@@ -54,7 +54,6 @@ public class Palionniy
         Console.WriteLine("Завдання 2: Видалити рядок з максимальним елементом");
 
         int[][] arr = CommonMethods.InputJaggedArray();
-        if (arr.Length == 0) return;
 
         int max = int.MinValue;
         int maxRow = -1;
