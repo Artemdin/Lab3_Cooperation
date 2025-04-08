@@ -23,7 +23,7 @@ public class Palionniy
         Console.WriteLine("Завдання 1: Видалити T елементів починаючи з індексу K");
 
         int[] arr = CommonMethods.InputArray();
-        if (arr.Length == 0) return;
+     
 
         int k = CommonMethods.ReadInt("Введіть індекс K (починаючи з 0): ");
         int t = CommonMethods.ReadInt("Введіть кількість T: ");
