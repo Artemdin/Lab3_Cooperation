@@ -47,7 +47,7 @@ public class Dinov
                     newArr[j++] = arr[i];
                 }
             }
-            arr = newArr;
+;
             Console.WriteLine("Результат:");
             CommonMethods.PrintArray(newArr);
         }
