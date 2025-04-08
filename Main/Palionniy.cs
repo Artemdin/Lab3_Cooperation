@@ -18,69 +18,11 @@ public class Palionniy
         }
     }
 
-    static int ReadInt(string message)
-    {
-        int result;
-        while (true)
-        {
-            Console.Write(message);
-            if (int.TryParse(Console.ReadLine(), out result))
-                return result;
-            Console.WriteLine("Помилка! Введіть ціле число.");
-        }
-    }
-
-
-    static int[] InputArray()
-    {
-        int size = ReadInt("Введіть кількість елементів масиву: ");
-
-        if (size <= 0)
-        {
-            Console.WriteLine("Розмір масиву має бути більше 0.");
-            return new int[0];
-        }
-
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++)
-        {
-            arr[i] = ReadInt($"arr[{i}] = ");
-        }
-        return arr;
-    }
-
-    static void PrintArray(int[] arr)
-    {
-        if (arr.Length == 0)
-        {
-            Console.WriteLine("Масив порожній.");
-            return;
-        }
-
-        Console.WriteLine("[" + string.Join(", ", arr) + "]");
-    }
-    private static int[][] InputArrayzub()
-    {
-        Console.WriteLine("Введіть кількість рядків масиву:");
-        int rowCount = int.Parse(Console.ReadLine());
-
-        int[][] arr = new int[rowCount][];
-
-        for (int i = 0; i < rowCount; i++)
-        {
-            Console.WriteLine($"Введіть елементи для рядка {i + 1} (через пробіл):");
-            string[] input = Console.ReadLine().Split(' ');
-            arr[i] = input.Select(int.Parse).ToArray();
-        }
-
-        return arr;
-    }
-
     private static void Task1()
     {
         Console.WriteLine("Завдання 1: Видалити T елементів починаючи з індексу K");
 
-        int[] arr = InputArray();
+        int[] arr = CommonMethods.InputArray();
         if (arr.Length == 0) return;
 
         int k = ReadInt("Введіть індекс K (починаючи з 0): ");
@@ -99,7 +41,7 @@ public class Palionniy
             }
 
             Console.WriteLine("Результат:");
-            PrintArray(newArr);
+            CommonMethods.PrintArray(newArr);
         }
         else
         {
@@ -112,7 +54,7 @@ public class Palionniy
     {
         Console.WriteLine("Завдання 2: Видалити рядок з максимальним елементом");
 
-        int[][] arr = InputArrayzub();
+        int[][] arr = CommonMethods.InputJaggedArray();
         if (arr.Length == 0) return;
 
         int max = int.MinValue;
@@ -141,9 +83,6 @@ public class Palionniy
         }
 
         Console.WriteLine("Результат:");
-        foreach (var row in newArr)
-        {
-            Console.WriteLine(string.Join(", ", row));
-        }
+        CommonMethods.PrintJaggedArray(jaggedArray);
     }
 }
