@@ -25,8 +25,8 @@ public class Palionniy
         int[] arr = CommonMethods.InputArray();
         if (arr.Length == 0) return;
 
-        int k = ReadInt("¬вед≥ть ≥ндекс K (починаючи з 0): ");
-        int t = ReadInt("¬вед≥ть к≥льк≥сть T: ");
+        int k = CommonMethods.ReadInt("¬вед≥ть ≥ндекс K (починаючи з 0): ");
+        int t = CommonMethods.ReadInt("¬вед≥ть к≥льк≥сть T: ");
 
         if (k >= 0 && k + t <= arr.Length)
         {
@@ -83,6 +83,6 @@ public class Palionniy
         }
 
         Console.WriteLine("–езультат:");
-        CommonMethods.PrintJaggedArray(jaggedArray);
+        CommonMethods.PrintJaggedArray(newArr);
     }
 }
