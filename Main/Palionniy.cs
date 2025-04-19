@@ -51,36 +51,6 @@ public class Palionniy
 
     private static void Task2()
     {
-        Console.WriteLine("Завдання 2: Видалити рядок з максимальним елементом");
-
-        int[][] arr = CommonMethods.InputJaggedArray();
-
-        int max = int.MinValue;
-        int maxRow = -1;
-
-        for (int i = 0; i < arr.Length; i++)
-        {
-            foreach (int value in arr[i])
-            {
-                if (value > max)
-                {
-                    max = value;
-                    maxRow = i;
-                }
-            }
-        }
-
-        int[][] newArr = new int[arr.Length - 1][];
-        int index = 0;
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if (i != maxRow)
-            {
-                newArr[index++] = arr[i];
-            }
-        }
-
-        Console.WriteLine("Результат:");
-        CommonMethods.PrintJaggedArray(newArr);
+       
     }
 }
