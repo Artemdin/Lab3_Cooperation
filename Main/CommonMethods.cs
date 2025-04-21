@@ -2,7 +2,11 @@ using System;
 
 public static class CommonMethods
 {
-	public static int ReadInt(string message, int min = int.MinValue, int max = int.MaxValue)
+
+    private static int[]? previousArray = null;
+    private static int[][]? previousJaggedArray = null;
+
+    public static int ReadInt(string message, int min = int.MinValue, int max = int.MaxValue)
 	{
 		int result;
 		while (true)
@@ -18,7 +22,19 @@ public static class CommonMethods
 
 	public static int[] InputArray()
 	{
-		int size = ReadInt("Введіть кількість елементів масиву: ", 1);
+        if (previousArray != null)
+        {
+            Console.Write("Бажаєте використати попередній масив? (y/n): ");
+            string reuse = Console.ReadLine()!.Trim().ToLower();
+            if (reuse == "y")
+            {
+                Console.WriteLine("Попередній масив:");
+                PrintArray(previousArray);
+                return previousArray;
+            }
+        }
+
+        int size = ReadInt("Введіть кількість елементів масиву: ", 1);
 		int[] arr = new int[size];
 
 		Console.Write("Заповнити масив випадково? (y/n): ");
@@ -40,7 +56,8 @@ public static class CommonMethods
 			return InputArray();
 		}
 
-		return arr;
+        previousArray = arr;
+        return arr;
 	}
 
 	public static int[] GenerateRandomArray(int size, int min = -100, int max = 100)
@@ -66,30 +83,43 @@ public static class CommonMethods
 
 	public static int[][] InputJaggedArray()
 	{
-		int rows = ReadInt("Введіть кількість рядків у масиві: ", 1);
+        if (previousJaggedArray != null)
+        {
+            Console.Write("Бажаєте використати попередній зубчастий масив? (y/n): ");
+            string reuse = Console.ReadLine()!.Trim().ToLower();
+            if (reuse == "y")
+            {
+                Console.WriteLine("Попередній зубчастий масив:");
+                PrintJaggedArray(previousJaggedArray);
+                return previousJaggedArray;
+            }
+        }
+
+
+        int rows = ReadInt("Введіть кількість рядків у масиві: ", 1);
 
 		Console.Write("Заповнити масив випадково? (y/n): ");
 		string choice = Console.ReadLine()!.Trim().ToLower();
 
-		if (choice == "y")
+        int[][] jaggedArray;
+
+        if (choice == "y")
 		{
 			Random rand = new Random();
-			int[][] randomJagged = new int[rows][];
+            jaggedArray = new int[rows][];
 			for (int i = 0; i < rows; i++)
 			{
 				int cols = rand.Next(1, 5);
-				randomJagged[i] = new int[cols];
+				jaggedArray[i] = new int[cols];
 				for (int j = 0; j < cols; j++)
-					randomJagged[i][j] = rand.Next(-100, 101);
+					jaggedArray[i][j] = rand.Next(-100, 101);
 			}
 
 			Console.WriteLine("Згенеровано масив:");
-			PrintJaggedArray(randomJagged);
-			return randomJagged;
 		}
 		else if(choice == "n")
 		{
-			int[][] jaggedArray = new int[rows][];
+			jaggedArray = new int[rows][];
 			for (int i = 0; i < rows; i++)
 			{
 				int cols = ReadInt($"Введіть кількість елементів у рядку {i}: ", 1);
@@ -101,15 +131,17 @@ public static class CommonMethods
 			}
 
 			Console.WriteLine("Введений масив:");
-			PrintJaggedArray(jaggedArray);
-			return jaggedArray;
 		}
 		else
 		{
 			Console.WriteLine("Введено некоректне значення. Повторіть спробу!");
 			return InputJaggedArray();
 		}
-	}
+
+        PrintJaggedArray(jaggedArray);
+        previousJaggedArray = jaggedArray;
+        return jaggedArray;
+    }
 
 	public static void PrintJaggedArray(int[][] jaggedArray)
 	{
