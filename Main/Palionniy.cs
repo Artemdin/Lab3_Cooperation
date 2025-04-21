@@ -27,8 +27,13 @@ public class Palionniy
         int k = CommonMethods.ReadInt("Введіть індекс K (починаючи з 0): ");
         int t = CommonMethods.ReadInt("Введіть кількість T: ");
 
-        if (k >= 0 && k + t <= arr.Length)
+        if (k >= 0 && k < arr.Length)
         {
+            if (k + t > arr.Length)
+            {
+                t = arr.Length - k;
+            }
+
             int[] newArr = new int[arr.Length - t];
             int j = 0;
             for (int i = 0; i < arr.Length; i++)
@@ -44,7 +49,7 @@ public class Palionniy
         }
         else
         {
-            Console.WriteLine("Неможливо видалити елементи. Перевірте індекс та кількість.");
+            Console.WriteLine("Неможливо видалити елементи. Перевірте індекс.");
         }
     }
 
@@ -83,4 +88,5 @@ public class Palionniy
         Console.WriteLine("Результат:");
         CommonMethods.PrintJaggedArray(newArr);
     }
+
 }
